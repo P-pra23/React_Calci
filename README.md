@@ -46,6 +46,117 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
+```
+import React, { useState } from "react";
+import "./Calculator.css";
+
+function Calculator() {
+
+  const [input, setInput] = useState("");
+
+  const handleClick = (value) => {
+    setInput(input + value);
+  };
+
+  const calculate = () => {
+    try {
+      setInput(eval(input).toString());
+    } catch {
+      setInput("Error");
+    }
+  };
+
+  const clear = () => {
+    setInput("");
+  };
+
+  return (
+    <div className="calculator">
+      <h2>Simple Calculator</h2>
+
+      <input type="text" value={input} readOnly />
+
+      <div className="buttons">
+
+        <button onClick={() => handleClick("7")}>7</button>
+        <button onClick={() => handleClick("8")}>8</button>
+        <button onClick={() => handleClick("9")}>9</button>
+        <button onClick={() => handleClick("/")}>/</button>
+
+        <button onClick={() => handleClick("4")}>4</button>
+        <button onClick={() => handleClick("5")}>5</button>
+        <button onClick={() => handleClick("6")}>6</button>
+        <button onClick={() => handleClick("*")}>*</button>
+
+        <button onClick={() => handleClick("1")}>1</button>
+        <button onClick={() => handleClick("2")}>2</button>
+        <button onClick={() => handleClick("3")}>3</button>
+        <button onClick={() => handleClick("-")}>-</button>
+
+        <button onClick={() => handleClick("0")}>0</button>
+        <button onClick={clear}>C</button>
+        <button onClick={calculate}>=</button>
+        <button onClick={() => handleClick("+")}>+</button>
+
+      </div>
+
+      <footer>
+        Name: Your Name | Reg No: Your Register Number
+      </footer>
+
+    </div>
+  );
+}
+
+export default Calculator;
+```
+```
+.calculator {
+  width: 300px;
+  margin: 100px auto;
+  text-align: center;
+  font-family: Arial;
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+footer{
+  margin-top:20px;
+  font-size:14px;
+}
+```
+```
+import React from "react";
+import Calculator from "./Calculator";
+
+function App() {
+  return (
+    <div>
+      <Calculator />
+    </div>
+  );
+}
+
+export default App;
+```
 
 
 ## OUTPUT
